@@ -1,0 +1,119 @@
+.head {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 99;
+    background-color: #f8f8f8;
+}
+
+.body {
+    margin-top: 100rpx;
+}
+
+.index-head-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10rpx 0 20rpx 0;
+    box-shadow: 0 0 10rpx #888;
+}
+
+.index-head-container image {
+    margin: 0 20rpx;
+    width: 50rpx;
+    height: 50rpx;
+}
+
+.index-head-container text {
+    font-size: 38rpx;
+}
+
+.datePicker-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.datePicker-container text {
+    margin: 0 60rpx;
+}
+
+.datePicker-container image {
+    margin: 0;
+    width: 30rpx;
+    height: 30rpx;
+}
+
+.week-container {
+    width: 95%;
+    margin: 10rpx auto 0;
+    display: flex;
+    flex-direction: row;
+}
+
+.day-container {
+    width: 14.3%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.dayOfMonth {
+    font-size: 24rpx;
+    margin: 10rpx 0;
+}
+
+.dayOfWeek {
+    background-color: #f2f2f2;
+    width: 100%;
+    padding: 30rpx 0;
+    text-align: center;
+    border: 1rpx solid #d7d8dc;
+}
+
+.selected {
+    background-color: #09bb07;
+}
+
+.lesson-container {
+    width: 95%;
+    margin: 24rpx auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border-radius: 6rpx;
+}
+
+.lesson-container image {
+    width: 80rpx;
+    height: 80rpx;
+    margin: 12rpx;
+}
+
+.lesson-info {
+    margin: 12rpx;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-grow: 1;
+}
+
+.lesson-info .dim {
+    color: grey;
+}
+
+.lesson-info text {
+    margin: 4rpx 0;
+}
+
+.lesson-info-left {
+    display: flex;
+    flex-direction: column;
+}
+
+.lesson-info-right {
+    display: flex;
+    flex-direction: column;
+}

@@ -1,0 +1,13 @@
+text {
+    font-family: Microsoft YaHei;
+    font-size: 28rpx;
+    color: #353535;
+}
+
+page {
+    background-color: #f8f8f8;
+}
+
+.shadow {
+    box-shadow: 2rpx 2rpx 10rpx #ccc;
+}

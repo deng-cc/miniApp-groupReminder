@@ -1,0 +1,9 @@
+{
+  "pages":[
+    "pages/index/index"
+  ],
+  "window": {
+	"navigationBarBackgroundColor": "#f8f8f8",
+	"backgroundColor": "#eeeeee"
+  }
+}

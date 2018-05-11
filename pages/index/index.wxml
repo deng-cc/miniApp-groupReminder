@@ -1,0 +1,36 @@
+<view class="head">
+    <view class="index-head-container">
+        <image catch:tap="onSettingTap" mode="aspectFit" src="/images/setting.png"></image>
+        <view class="datePicker-container">
+            <!-- <image src="/images/arrow_left.png"></image> -->
+            <text>{{year}}年{{month+1}}月</text>
+            <!-- <image src="/images/arrow_right.png"></image> -->
+        </view>
+        <image catch:tap="onMineTap" mode="aspectFit" src="/images/mine.png"></image>
+    </view>
+</view>
+<view class="body">
+    <view class="week-container">
+        <block wx:for="{{hebdomad}}">
+            <view class="day-container" catch:tap="onDayTap" data-day-of-month-selected='{{item.dayOfMonth}}'>
+                <text class="dayOfMonth">{{item.dayOfMonth}}</text>
+                <text class="{{item.dayOfMonth == dayOfMonth ? 'dayOfWeek selected' : 'dayOfWeek'}}  dayOfWeek">{{item.dayOfWeek}}</text>
+            </view>
+        </block>
+    </view>
+    <block wx:for="{{lessonArr}}">
+        <view class="lesson-container shadow">
+            <image src="{{item.imgUrl}}"></image>
+            <view class="lesson-info">
+                <view class="lesson-info-left">
+                    <text>{{item.name}}</text>
+                    <text class="dim">{{item.teacher}}</text>
+                </view>
+                <view class="lesson-info-right">
+                    <text>{{item.time}}</text>
+                    <text class="dim">{{item.duration}}min</text>
+                </view>
+            </view>
+        </view>
+    </block>
+</view>
