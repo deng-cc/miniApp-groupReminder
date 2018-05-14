@@ -1,4 +1,5 @@
 var lessonDao = require("../../sdk/lessonDao.js");
+var noticeDao = require("../../sdk/noticeDao.js");
 var common = require("../../data/common.js")
 
 Page({
@@ -11,14 +12,13 @@ Page({
 		year: null,
 		month: null,
 		dayOfMonth: null,
-		lessonArr: null
+		lessonArr: null,
+		noticeArr: null
 	},
 
 	onLoad: function () {
-		wx.showLoading({
-			title: "loading"
-		})
 		this.initCurDate();
+		this.loadNotice(new Date());
 		this.loadLesson(new Date());
 	},
 
@@ -46,27 +46,67 @@ Page({
 
 	//加载课程列表
 	loadLesson: function (date) {
+		wx.showLoading({
+			title: "loading"
+		});
 		this.setData({
 			lessonArr: null
 		});
 		let that = this;
 		lessonDao.listLesson(date,
 			function (res) {
+				console.log("lessonArr:")
 				console.log(res);
 				let lessonArr = new Array();
 				for (let index in res.data.objects) {
 					let data = res.data.objects[index];
 					let lesson = {
-						imgUrl: data['imgUrl'],
-						name: data['courseType_name'],
-						teacher: data['teacher_name'],
-						time: data['startTime'].substring(11, 16),
-						duration: data['duration']
+						imgUrl: data["imgUrl"],
+						name: data["courseType_name"],
+						teacher: data["teacher_name"],
+						time: data["startTime"].substring(11, 16),
+						duration: data["duration"]
 					}
 					lessonArr.push(lesson);
 				}
 				that.setData({
 					lessonArr: lessonArr
+				})
+				wx.hideLoading();
+			},
+			function (err) {
+				console.log(err);
+				wx.showToast({
+					title: "Error:" + err.message,
+					icon: "none"
+				})
+			})
+	},
+
+	//加载通知列表
+	loadNotice: function (date) {
+		wx.showLoading({
+			title: "loading"
+		});
+		this.setData({
+			noticeArr: null
+		});
+		let that = this;
+		noticeDao.listNotice(date,
+			function (res) {
+				console.log("noticeArr:")
+				console.log(res);
+				let noticeArr = new Array();
+				for (let index in res.data.objects) {
+					let data = res.data.objects[index];
+					let notice = {
+						title: data["title"],
+						content: data["content"],
+					}
+					noticeArr.push(notice);
+				}
+				that.setData({
+					noticeArr: noticeArr
 				})
 				wx.hideLoading();
 			},
@@ -90,16 +130,17 @@ Page({
 			month: this.data.hebdomad[arrIndex].month,
 			dayOfMonth: dayOfMonthSelected
 		})
-		this.loadLessonByHebdomad(arrIndex);
+		this.loadDataByHebdomad(arrIndex);
 	},
 
-	loadLessonByHebdomad: function (arrIndex) {
+	loadDataByHebdomad: function (arrIndex) {
 		let date = this.data.hebdomad[arrIndex];
 		let day = new Date();
 		day.setDate(date.dayOfMonth);
 		day.setMonth(date.month);
 		day.setFullYear(date.year);
 		this.loadLesson(day);
+		this.loadNotice(day)
 	},
 
 	onSettingTap: function () {
@@ -110,10 +151,14 @@ Page({
 	},
 
 	onMineTap: function () {
+		/*
 		wx.showToast({
 			title: "还没想好干啥呢",
 			icon: "none"
 		});
+		*/
+		
+
 	}
 
 })

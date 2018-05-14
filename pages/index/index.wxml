@@ -10,6 +10,7 @@
     </view>
 </view>
 <view class="body">
+    <!-- 日期选择 -->
     <view class="week-container">
         <block wx:for="{{hebdomad}}">
             <view class="day-container" catch:tap="onDayTap" data-arr-index="{{index}}" data-day-of-month-selected="{{item.dayOfMonth}}">
@@ -18,6 +19,14 @@
             </view>
         </block>
     </view>
+    <!-- 通知 -->
+    <block wx:for="{{noticeArr}}">
+        <view class="notice-container shadow">
+            <text class="notice-title">{{item.title}}</text>
+            <text class="notice-content">{{item.content}}</text>
+        </view>
+    </block>
+    <!-- 课程 -->
     <block wx:for="{{lessonArr}}">
         <view class="lesson-container shadow">
             <image src="{{item.imgUrl}}"></image>
