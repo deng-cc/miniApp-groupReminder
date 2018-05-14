@@ -2,7 +2,7 @@ var lessonDao = require("../../sdk/lessonDao.js");
 var common = require("../../data/common.js")
 
 Page({
-	onShareAppMessage:function(options){
+	onShareAppMessage: function (options) {
 		//setting nothing
 	},
 
@@ -22,26 +22,29 @@ Page({
 		this.loadLesson(new Date());
 	},
 
+	//初始化当前时间
 	initCurDate: function () {
 		let day = new Date();
-		this.setData({
-			year: day.getFullYear(),
-			month: day.getMonth(),
-			dayOfMonth: day.getDate()
-		})
 		let hebdomad = new Array();
 		for (let i = 0; i < 7; i++) {
 			hebdomad[i] = {
+				year: day.getFullYear(),
+				month: day.getMonth(),
+				dayOfMonth: day.getDate(),
 				dayOfWeek: common.weekday[day.getDay()],
-				dayOfMonth: day.getDate()
 			}
 			day.setDate(day.getDate() + 1);
 		}
 		this.setData({
-			hebdomad: hebdomad
-		})
+			hebdomad: hebdomad,
+			year: hebdomad[0].year,
+			month: hebdomad[0].month,
+			dayOfMonth: hebdomad[0].dayOfMonth
+		});
+		console.log(hebdomad);
 	},
 
+	//加载课程列表
 	loadLesson: function (date) {
 		this.setData({
 			lessonArr: null
@@ -49,7 +52,7 @@ Page({
 		let that = this;
 		lessonDao.listLesson(date,
 			function (res) {
-				console.log("res:");
+				console.log(res);
 				let lessonArr = new Array();
 				for (let index in res.data.objects) {
 					let data = res.data.objects[index];
@@ -81,17 +84,21 @@ Page({
 			title: "loading"
 		})
 		let dayOfMonthSelected = event.currentTarget.dataset.dayOfMonthSelected;
+		let arrIndex = event.currentTarget.dataset.arrIndex;
 		this.setData({
+			year: this.data.hebdomad[arrIndex].year,
+			month: this.data.hebdomad[arrIndex].month,
 			dayOfMonth: dayOfMonthSelected
 		})
-		this.loadLessonBySelectedDay();
+		this.loadLessonByHebdomad(arrIndex);
 	},
 
-	loadLessonBySelectedDay: function () {
+	loadLessonByHebdomad: function (arrIndex) {
+		let date = this.data.hebdomad[arrIndex];
 		let day = new Date();
-		day.setFullYear(this.data.year);
-		day.setMonth(this.data.month);
-		day.setDate(this.data.dayOfMonth);
+		day.setDate(date.dayOfMonth);
+		day.setMonth(date.month);
+		day.setFullYear(date.year);
 		this.loadLesson(day);
 	},
 

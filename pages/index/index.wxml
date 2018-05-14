@@ -12,7 +12,7 @@
 <view class="body">
     <view class="week-container">
         <block wx:for="{{hebdomad}}">
-            <view class="day-container" catch:tap="onDayTap" data-day-of-month-selected='{{item.dayOfMonth}}'>
+            <view class="day-container" catch:tap="onDayTap" data-arr-index="{{index}}" data-day-of-month-selected="{{item.dayOfMonth}}">
                 <text class="dayOfMonth">{{item.dayOfMonth}}</text>
                 <text class="{{item.dayOfMonth == dayOfMonth ? 'dayOfWeek selected' : 'dayOfWeek'}}  dayOfWeek">{{item.dayOfWeek}}</text>
             </view>
