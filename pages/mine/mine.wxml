@@ -1,0 +1,115 @@
+<view class="user-container">
+    <view class="avatar shadow">
+        <open-data type="userAvatarUrl"></open-data>
+    </view>
+    <view class="userInfo">
+        <view class="nickname">
+            <open-data type="userNickName"></open-data>
+        </view>
+        <view class="location">
+            <open-data type="userProvince" lang="zh_CN"></open-data>
+            <open-data type="userCity" lang="zh_CN"></open-data>
+        </view>
+    </view>
+    <image catch:tap="onUnlockTap" class="unlock" mode="aspectFit" src="/images/unlock.png"></image>
+</view>
+<view class="spec-container shadow">
+    <text class="spec-title">管理员操作页面</text>
+    <text class="spec-content">点击解锁图案可申请后台权限</text>
+</view>
+<!-- 非管理员显示页面 -->
+<block wx:if="{{!isAuthed}}">
+    <view class="non-manage-container">
+        <image mode="aspectFit" src="/images/null.png"></image>
+        <text>没有管理权限，这里空空如也</text>
+    </view>
+</block>
+<!-- 管理员显示页面 -->
+<block wx:if="{{isAuthed}}">
+    <view class="module-container shadow">
+        <view class="module-head">
+            <text>通知管理</text>
+            <image src="/images/notice.png"></image>
+        </view>
+        <view class="module-body">
+            <navigator url="/pages/manage-notice/add/add" class="module-body-unit">
+                <view class="module-body-item">
+                    <text>新增通知</text>
+                    <image src="/images/arrow_right.png"></image>
+                </view>
+                <view class="module-body-item-line"></view>
+            </navigator>
+            <navigator class="module-body-unit">
+                <view class="module-body-item">
+                    <text>修改通知</text>
+                    <image src="/images/arrow_right.png"></image>
+                </view>
+                <view class="module-body-item-line"></view>
+            </navigator>
+            <navigator class="module-body-unit">
+                <view class="module-body-item">
+                    <text>删除通知</text>
+                    <image src="/images/arrow_right.png"></image>
+                </view>
+            </navigator>
+        </view>
+    </view>
+
+    <view class="module-container shadow">
+        <view class="module-head">
+            <text>团体操课管理</text>
+            <image src="/images/group-normal.png"></image>
+        </view>
+        <view class="module-body">
+            <navigator url="/pages/index/index" class="module-body-unit">
+                <view class="module-body-item">
+                    <text>待定</text>
+                    <image src="/images/arrow_right.png"></image>
+                </view>
+                <view class="module-body-item-line"></view>
+            </navigator>
+            <navigator class="module-body-unit">
+                <view class="module-body-item">
+                    <text>待定</text>
+                    <image src="/images/arrow_right.png"></image>
+                </view>
+                <view class="module-body-item-line"></view>
+            </navigator>
+            <navigator class="module-body-unit">
+                <view class="module-body-item">
+                    <text>待定</text>
+                    <image src="/images/arrow_right.png"></image>
+                </view>
+            </navigator>
+        </view>
+    </view>
+
+    <view class="module-container shadow">
+        <view class="module-head">
+            <text>团体私教课管理</text>
+            <image src="/images/group-mini.png"></image>
+        </view>
+        <view class="module-body">
+            <navigator url="/pages/index/index" class="module-body-unit">
+                <view class="module-body-item">
+                    <text>待定</text>
+                    <image src="/images/arrow_right.png"></image>
+                </view>
+                <view class="module-body-item-line"></view>
+            </navigator>
+            <navigator class="module-body-unit">
+                <view class="module-body-item">
+                    <text>待定</text>
+                    <image src="/images/arrow_right.png"></image>
+                </view>
+                <view class="module-body-item-line"></view>
+            </navigator>
+            <navigator class="module-body-unit">
+                <view class="module-body-item">
+                    <text>待定</text>
+                    <image src="/images/arrow_right.png"></image>
+                </view>
+            </navigator>
+        </view>
+    </view>
+</block>

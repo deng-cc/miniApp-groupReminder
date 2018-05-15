@@ -145,20 +145,15 @@ Page({
 
 	onSettingTap: function () {
 		wx.showToast({
-			title: "还没想好干啥呢",
+			title: "暂未开通",
 			icon: "none"
 		});
 	},
 
 	onMineTap: function () {
-		/*
-		wx.showToast({
-			title: "还没想好干啥呢",
-			icon: "none"
-		});
-		*/
-		
-
+		wx.navigateTo({
+			url: "/pages/mine/mine",
+		})
 	}
 
 })

@@ -1,9 +1,11 @@
 {
-  "pages":[
-    "pages/index/index"
-  ],
-  "window": {
-	"navigationBarBackgroundColor": "#f8f8f8",
-	"backgroundColor": "#eeeeee"
-  }
+	"pages": [
+		"pages/index/index",
+		"pages/mine/mine",
+		"pages/manage-notice/add/add"
+	],
+	"window": {
+		"navigationBarBackgroundColor": "#f8f8f8",
+		"backgroundColor": "#eeeeee"
+	}
 }

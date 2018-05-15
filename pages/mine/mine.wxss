@@ -1,0 +1,127 @@
+
+.user-container {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+}
+
+.avatar {
+	width: 120rpx;
+	height: 120rpx;
+	border-radius: 120rpx;
+	overflow: hidden;
+	margin: 30rpx;
+}
+
+.userInfo {
+	display: flex;
+	flex-direction: column;
+}
+
+.nickname {
+	font-size: 30rpx;
+}
+
+.location {
+	font-size: 26rpx;
+	color: grey;
+	margin-top: 8rpx;
+}
+
+.unlock {
+	margin-left: 80rpx;
+	width: 60rpx;
+	height: 60rpx;
+}
+
+.spec-container {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    margin: 20rpx auto;
+    border-radius: 6rpx;
+    background-color: #fff6e5;
+}
+
+.spec-container text {
+    color: #716249;
+}
+
+.spec-title {
+    margin: 20rpx 20rpx 10rpx;
+    font-weight: bold;
+}
+
+.spec-content {
+    margin: 0 20rpx 20rpx;
+}
+
+.non-manage-container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.non-manage-container image {
+	width: 80%;
+}
+
+.module-container {
+	margin: 30rpx auto;
+	display: flex;
+	flex-direction: column;
+	width: 80%;
+	align-items: center;
+}
+
+.module-head {
+	width: 90%;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	margin: 20rpx;
+}
+
+.module-head text {
+	font-size: 30rpx;
+	color: #576b95;
+}
+
+.module-head image {
+	width: 60rpx;
+	height: 60rpx;
+}
+
+.module-body {
+	width: 90%;
+	display: flex;
+	flex-direction: column;
+	margin: 20rpx 0 10rpx;
+}
+
+.module-body-unit {
+	
+}
+
+.module-body-item {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	margin: 20rpx 0;
+}
+
+.module-body-unit text {
+
+}
+
+.module-body-unit image {
+	width: 30rpx;
+	height: 30rpx;
+}
+
+.module-body-item-line{
+	border-bottom: 1rpx solid #D9D9D9;
+}
