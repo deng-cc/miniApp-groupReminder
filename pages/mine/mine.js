@@ -1,4 +1,6 @@
 var userDao = require("../../sdk/userDao.js");
+var util = require("../../utils/util.js");
+var constant = require("../../data/constant.js");
 
 Page({
 	data: {
@@ -7,15 +9,17 @@ Page({
 
 	onLoad: function () {
 		this.checkAuth();
+		wx.setNavigationBarTitle({
+			title: wx.getStorageSync(constant.KEY_GYM_NAME)
+		})
 	},
 
 	checkAuth: function () {
 		let that = this;
 		wx.showLoading({
-			title: "checking",
-			icon: "none"
+			title: "checking"
 		});
-		wx.BaaS.login().then(
+		wx.BaaS.login(false).then(
 			res => {
 				let userId = res.id;
 				userDao.findUser(userId,
@@ -29,31 +33,25 @@ Page({
 					},
 					function (err) {
 						wx.hideLoading();
-						wx.showToast({
-							title: "Error:" + err.message,
-							icon: "none"
-						})
+						util.showErr(err);
 					}
 				);
 			},
 			err => {
 				wx.hideLoading();
-				wx.showToast({
-					title: "Error:" + err.message,
-					icon: "none"
-				})
+				util.showErr(err);
 			}
 		)
 	},
 
-	onUnlockTap:function(){
+	onUnlockTap: function () {
 		wx.showToast({
 			title: "申请通道暂未开放",
 			icon: "none"
 		});
 	},
 
-	onNoticeTap:function(){
+	onNoticeTap: function () {
 		wx.navigateTo({
 			url: "/pages/manage-notice/manage-notice",
 		})

@@ -1,6 +1,9 @@
 var lessonDao = require("../../sdk/lessonDao.js");
 var noticeDao = require("../../sdk/noticeDao.js");
+var gymDao = require("../../sdk/gymDao.js");
 var common = require("../../data/common.js")
+var constant = require("../../data/constant.js")
+var util = require("../../utils/util.js")
 
 Page({
 	onShareAppMessage: function (options) {
@@ -17,9 +20,15 @@ Page({
 	},
 
 	onLoad: function () {
+		let that = this;
 		this.initCurDate();
-		this.loadNotice(new Date());
-		this.loadLesson(new Date());
+		this.initGym(function () {
+			that.loadNotice(new Date());
+			that.loadLesson(new Date());
+			wx.setNavigationBarTitle({
+				title: wx.getStorageSync(constant.KEY_GYM_NAME)
+			})
+		});
 	},
 
 	//初始化当前时间
@@ -44,6 +53,25 @@ Page({
 		console.log(hebdomad);
 	},
 
+	initGym: function (execute) {
+		let gymId = wx.getStorageSync(constant.KEY_GYM_ID);
+		//如果首次进入（没有选择健身房）
+		if (!gymId) {
+			gymDao.listAllGym(
+				function (res) {
+					wx.setStorageSync(constant.KEY_GYM_ID, res.data.objects[0].id);
+					wx.setStorageSync(constant.KEY_GYM_NAME, res.data.objects[0].name);
+					execute();
+				},
+				function (err) {
+					util.showErr(err);
+				}
+			);
+		} else {
+			execute();
+		}
+	},
+
 	//加载课程列表
 	loadLesson: function (date) {
 		wx.showLoading({
@@ -53,7 +81,7 @@ Page({
 			lessonArr: null
 		});
 		let that = this;
-		lessonDao.listLesson(date,
+		lessonDao.listLesson(wx.getStorageSync(constant.KEY_GYM_ID), date,
 			function (res) {
 				console.log("lessonArr:")
 				console.log(res);
@@ -75,11 +103,7 @@ Page({
 				wx.hideLoading();
 			},
 			function (err) {
-				console.log(err);
-				wx.showToast({
-					title: "Error:" + err.message,
-					icon: "none"
-				})
+				util.showErr(err);
 			})
 	},
 
@@ -92,7 +116,7 @@ Page({
 			noticeArr: null
 		});
 		let that = this;
-		noticeDao.listNotice(date,
+		noticeDao.listNotice(wx.getStorageSync(constant.KEY_GYM_ID), date,
 			function (res) {
 				console.log("noticeArr:")
 				console.log(res);
@@ -111,11 +135,7 @@ Page({
 				wx.hideLoading();
 			},
 			function (err) {
-				console.log(err);
-				wx.showToast({
-					title: "Error:" + err.message,
-					icon: "none"
-				})
+				util.showErr(err);
 			})
 	},
 

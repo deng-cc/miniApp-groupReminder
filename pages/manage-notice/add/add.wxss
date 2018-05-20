@@ -1,0 +1,46 @@
+.page-container {
+    width: 90%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.input-container {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	margin: 10rpx 0;
+}
+
+.input-container text {
+	margin: 2rpx 0;
+}
+
+input, textarea {
+    width: 651rpx;
+    border-radius: 10rpx;
+    border: 1rpx solid #ccc;
+	font-size: 28rpx;
+	padding: 10rpx 12rpx;
+}
+
+
+.picker-container {
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	margin: 15rpx 0;
+}
+
+picker text{
+	color: #576b95;
+	display: block;
+}
+
+button {
+	width: 100%;
+	margin: 60rpx;
+}

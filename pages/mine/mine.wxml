@@ -61,20 +61,6 @@
             <image src="/images/group-normal.png"></image>
         </view>
         <view class="module-body">
-            <navigator url="/pages/index/index" class="module-body-unit">
-                <view class="module-body-item">
-                    <text>待定</text>
-                    <image src="/images/arrow_right.png"></image>
-                </view>
-                <view class="module-body-item-line"></view>
-            </navigator>
-            <navigator class="module-body-unit">
-                <view class="module-body-item">
-                    <text>待定</text>
-                    <image src="/images/arrow_right.png"></image>
-                </view>
-                <view class="module-body-item-line"></view>
-            </navigator>
             <navigator class="module-body-unit">
                 <view class="module-body-item">
                     <text>待定</text>
@@ -90,20 +76,6 @@
             <image src="/images/group-mini.png"></image>
         </view>
         <view class="module-body">
-            <navigator url="/pages/index/index" class="module-body-unit">
-                <view class="module-body-item">
-                    <text>待定</text>
-                    <image src="/images/arrow_right.png"></image>
-                </view>
-                <view class="module-body-item-line"></view>
-            </navigator>
-            <navigator class="module-body-unit">
-                <view class="module-body-item">
-                    <text>待定</text>
-                    <image src="/images/arrow_right.png"></image>
-                </view>
-                <view class="module-body-item-line"></view>
-            </navigator>
             <navigator class="module-body-unit">
                 <view class="module-body-item">
                     <text>待定</text>

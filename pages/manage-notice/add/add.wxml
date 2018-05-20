@@ -1,1 +1,27 @@
-<text>hello, add page!</text>
+<view class="page-container">
+
+    <view class="input-container">
+        <text>标题</text>
+        <input bindinput="onInput" placeholder="请输入通知的标题" value="{{title}}" />
+    </view>
+    <view class="input-container">
+        <text>内容</text>
+        <textarea bindinput="onTextarea" placeholder="请输入通知的内容" value="{{content}}" />
+    </view>
+
+    <view class="picker-container">
+        <text>生效时间</text>
+        <picker mode="date" value="{{startDate}}" start="{{startDate}}" end="{{startDateEnd}}" bindchange="onStartDateChange">
+            <text>当前选择: {{startDate}}</text>
+        </picker>
+    </view>
+    <view class="picker-container">
+        <text>失效时间</text>
+        <picker mode="date" value="{{endDate}}" start="{{endDate}}" end="{{endDateEnd}}" bindchange="onEndDateChange">
+            <text>当前选择: {{endDate}}</text>
+        </picker>
+    </view>
+
+    <button catch:tap="onAddTap" type="primary">添 加</button>
+	
+</view>
