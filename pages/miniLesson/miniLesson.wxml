@@ -1,0 +1,40 @@
+<view class="head">
+    <view class="index-head-container">
+        <image catch:tap="onSettingTap" mode="aspectFit" src="/images/setting.png"></image>
+        <view class="datePicker-container">
+            <text>{{year}}年{{month + 1}}月</text>
+        </view>
+        <image catch:tap="onInfoTap" mode="aspectFit" src="/images/info.png"></image>
+    </view>
+</view>
+<view class="body">
+    <block wx:if="{{isInfoOn}}">
+        <block wx:for="{{infoArr}}">
+            <view class="info-container shadow">
+                <text class="info-title">{{item.title}}</text>
+                <text class="info-content">{{item.content}}</text>
+            </view>
+        </block>
+    </block>
+    <block wx:for="{{miniLessonArr}}">
+        <view class="lesson-container shadow">
+            <image class="lessonImg" src="{{item.imgUrl}}"></image>
+            <view class="lesson-info">
+                <view class="lesson-info-left">
+                    <text>{{item.name}}</text>
+                    <text class="dim">{{item.teacher}}</text>
+                    <view class="strength-container">
+                        <block wx:for="{{item.strength}}">
+                            <image src="/data/weight.png"></image>
+                        </block>
+                    </view>
+                </view>
+                <view class="lesson-info-right">
+                    <text>{{item.remain}}</text>
+                    <text class="dim">{{item.startDate}}</text>
+                    <text class="dim">{{item.startTime + " " + item.duration}}</text>
+                </view>
+            </view>
+        </view>
+    </block>
+</view>

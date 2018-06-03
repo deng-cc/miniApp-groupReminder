@@ -1,0 +1,104 @@
+.head {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 99;
+    background-color: #f8f8f8;
+}
+
+.index-head-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10rpx 0 20rpx 0;
+    box-shadow: 0 0 10rpx #888;
+}
+
+.index-head-container image {
+    margin: 0 20rpx;
+    width: 50rpx;
+    height: 50rpx;
+}
+
+.index-head-container text {
+    font-size: 38rpx;
+}
+
+.body {
+    margin-top: 100rpx;
+}
+
+.info-container {
+    display: flex;
+    flex-direction: column;
+    width: 95%;
+    margin: 20rpx auto;
+    border-radius: 6rpx;
+    background-color: #fff6e5;
+}
+
+.info-container text {
+    color: #716249;
+}
+
+.info-title {
+    margin: 20rpx 20rpx 10rpx;
+    font-weight: bold;
+}
+
+.info-content {
+    margin: 0 20rpx 20rpx;
+}
+
+.lesson-container {
+    width: 95%;
+    margin: 24rpx auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border-radius: 6rpx;
+}
+
+.lessonImg {
+    width: 120rpx;
+    height: 120rpx;
+    margin: 12rpx;
+}
+
+.lesson-info {
+    margin: 12rpx;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-grow: 1;
+}
+
+.lesson-info .dim {
+    color: grey;
+}
+
+.lesson-info text {
+    margin: 4rpx 0;
+}
+
+.lesson-info-left {
+    display: flex;
+    flex-direction: column;
+}
+
+.strength-container {
+    display: flex;
+    flex-direction: row;
+}
+
+.strength-container image {
+    width: 35rpx;
+    height: 35rpx;
+}
+
+.lesson-info-right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}

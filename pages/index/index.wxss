@@ -87,7 +87,7 @@
     border-radius: 6rpx;
 }
 
-.lesson-container image {
+.lessonImg {
     width: 80rpx;
     height: 80rpx;
     margin: 12rpx;
@@ -139,4 +139,16 @@
 
 .notice-content {
     margin: 0 20rpx 20rpx;
+}
+
+.lessonReminder {
+	width: 60rpx;
+	height: 60rpx;
+	margin: 12rpx;
+}
+
+.remind-container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 }

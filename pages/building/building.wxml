@@ -1,0 +1,4 @@
+<view class="body">
+    <image mode="aspectFit" src="/images/building.png"></image>
+	<text>如果开发者不偷懒的话，大概过些日子就有了</text>
+</view>

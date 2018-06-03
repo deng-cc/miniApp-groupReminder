@@ -1,11 +1,41 @@
 {
 	"pages": [
 		"pages/index/index",
+		"pages/miniLesson/miniLesson",
 		"pages/mine/mine",
-		"pages/manage-notice/add/add"
+		"pages/manage-notice/add/add",
+		"pages/building/building"
 	],
 	"window": {
 		"navigationBarBackgroundColor": "#f8f8f8",
 		"backgroundColor": "#eeeeee"
+	},
+	"tabBar": {
+		"list": [
+			{
+				"pagePath": "pages/index/index",
+				"text": "操课",
+				"iconPath": "images/tabBar/lessonOff.png",
+				"selectedIconPath": "images/tabBar/lessonOn.png"
+			},
+			{
+				"pagePath": "pages/miniLesson/miniLesson",
+				"text": "小团课",
+				"iconPath": "images/tabBar/miniLessonOff.png",
+				"selectedIconPath": "images/tabBar/miniLessonOn.png"
+			},
+			{
+				"pagePath": "pages/building/building",
+				"text": "公开课",
+				"iconPath": "images/tabBar/publicOff.png",
+				"selectedIconPath": "images/tabBar/publicOn.png"
+			},
+			{
+				"pagePath": "pages/building/building",
+				"text": "其他",
+				"iconPath": "images/tabBar/otherOff.png",
+				"selectedIconPath": "images/tabBar/otherOn.png"
+			}
+		]
 	}
 }

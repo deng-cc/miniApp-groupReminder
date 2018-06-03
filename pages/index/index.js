@@ -1,9 +1,9 @@
 var lessonDao = require("../../sdk/lessonDao.js");
 var noticeDao = require("../../sdk/noticeDao.js");
 var gymDao = require("../../sdk/gymDao.js");
-var common = require("../../data/common.js")
-var constant = require("../../data/constant.js")
-var util = require("../../utils/util.js")
+var common = require("../../data/common.js");
+var constant = require("../../data/constant.js");
+var util = require("../../utils/util.js");
 
 Page({
 	onShareAppMessage: function (options) {
@@ -22,7 +22,7 @@ Page({
 	onLoad: function () {
 		let that = this;
 		this.initCurDate();
-		this.initGym(function () {
+		gymDao.initGym(function () {
 			that.loadNotice(new Date());
 			that.loadLesson(new Date());
 			wx.setNavigationBarTitle({
@@ -53,25 +53,6 @@ Page({
 		console.log(hebdomad);
 	},
 
-	initGym: function (execute) {
-		let gymId = wx.getStorageSync(constant.KEY_GYM_ID);
-		//如果首次进入（没有选择健身房）
-		if (!gymId) {
-			gymDao.listAllGym(
-				function (res) {
-					wx.setStorageSync(constant.KEY_GYM_ID, res.data.objects[0].id);
-					wx.setStorageSync(constant.KEY_GYM_NAME, res.data.objects[0].name);
-					execute();
-				},
-				function (err) {
-					util.showErr(err);
-				}
-			);
-		} else {
-			execute();
-		}
-	},
-
 	//加载课程列表
 	loadLesson: function (date) {
 		wx.showLoading({
@@ -93,7 +74,7 @@ Page({
 						name: data["courseType_name"],
 						teacher: data["teacher_name"],
 						time: data["startTime"].substring(11, 16),
-						duration: data["duration"]
+						duration: data["duration"] + "min"
 					}
 					lessonArr.push(lesson);
 				}
@@ -161,6 +142,12 @@ Page({
 		day.setFullYear(date.year);
 		this.loadLesson(day);
 		this.loadNotice(day)
+	},
+
+	onRemindTap: function (event) {
+		console.log(event);
+		let formId = event.detail.formId;
+		
 	},
 
 	onSettingTap: function () {

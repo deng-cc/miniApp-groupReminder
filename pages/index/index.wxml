@@ -29,7 +29,7 @@
     <!-- 课程 -->
     <block wx:for="{{lessonArr}}">
         <view class="lesson-container shadow">
-            <image src="{{item.imgUrl}}"></image>
+            <image class="lessonImg" src="{{item.imgUrl}}"></image>
             <view class="lesson-info">
                 <view class="lesson-info-left">
                     <text>{{item.name}}</text>
@@ -37,9 +37,18 @@
                 </view>
                 <view class="lesson-info-right">
                     <text>{{item.time}}</text>
-                    <text class="dim">{{item.duration}}min</text>
+                    <text class="dim">{{item.duration}}</text>
                 </view>
             </view>
+			<!--
+            <view class="remind-container">
+                <form report-submit="true" bindsubmit="onRemindTap">
+                    <button form-type="submit" class="formButton">
+                        <image class="lessonReminder" src="/images/reminderOff.png"></image>
+                    </button>
+                </form>
+            </view>
+			-->
         </view>
     </block>
 </view>
