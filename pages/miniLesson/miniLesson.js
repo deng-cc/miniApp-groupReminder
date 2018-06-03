@@ -101,6 +101,7 @@ Page({
 
 	onPullDownRefresh : function(){
 		this.loadMiniLesson(new Date());
+		wx.stopPullDownRefresh();
 	},
 
 	onSettingTap: function () {
