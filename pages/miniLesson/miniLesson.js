@@ -6,6 +6,10 @@ var gymDao = require("../../sdk/gymDao.js");
 var util = require("../../utils/util.js");
 
 Page({
+	onShareAppMessage: function (options) {
+		//setting nothing
+	},
+	
 	data: {
 		year: null,
 		month: null,
@@ -99,22 +103,20 @@ Page({
 		)
 	},
 
-	onPullDownRefresh : function(){
+	onPullDownRefresh: function () {
 		this.loadMiniLesson(new Date());
 		wx.stopPullDownRefresh();
 	},
 
 	onSettingTap: function () {
 		wx.showToast({
-			title: "暂未开通",
+			title: "好像没什么可设置的",
 			icon: "none"
 		});
 	},
 
 	onInfoTap: function () {
-		this.setData({
-			isInfoOn: !this.data.isInfoOn
-		})
+		let infoFlag = !this.data.isInfoOn;
 		let that = this;
 		if (this.data.infoArr === null) {
 			miniLessonInfoDao.listInfo(wx.getStorageSync(constant.KEY_GYM_ID), new Date(),
@@ -130,14 +132,27 @@ Page({
 						}
 						infoArr.push(info);
 					}
+					if (!infoArr.length) {
+						let info = {
+							title: "暂无相关信息",
+							content: ""
+						}
+						infoArr.push(info);
+					}
+
 					that.setData({
 						infoArr: infoArr,
+						isInfoOn: infoFlag
 					})
 				},
 				function (err) {
 					util.showErr(err);
 				}
 			)
+		} else {
+			that.setData({
+				isInfoOn: infoFlag
+			});
 		}
 	}
 

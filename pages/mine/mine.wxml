@@ -14,8 +14,8 @@
     <image catch:tap="onUnlockTap" class="unlock" mode="aspectFit" src="/images/unlock.png"></image>
 </view>
 <view class="spec-container shadow">
-    <text class="spec-title">管理员操作页面</text>
-    <text class="spec-content">点击解锁图案可申请后台权限</text>
+    <text class="spec-title">联系小程序作者</text>
+    <text class="spec-content">可添加微信号 dcc_weixin </text>
 </view>
 <!-- 非管理员显示页面 -->
 <block wx:if="{{!isAuthed}}">

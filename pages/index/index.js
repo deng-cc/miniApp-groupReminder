@@ -152,7 +152,7 @@ Page({
 
 	onSettingTap: function () {
 		wx.showToast({
-			title: "暂未开通",
+			title: "好像没什么可设置的",
 			icon: "none"
 		});
 	},

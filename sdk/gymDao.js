@@ -10,7 +10,7 @@ function initGym(execute) {
 	let gymId = wx.getStorageSync(constant.KEY_GYM_ID);
 	//如果首次进入（没有选择健身房）
 	if (!gymId) {
-		gymDao.listAllGym(
+		this.listAllGym(
 			function (res) {
 				wx.setStorageSync(constant.KEY_GYM_ID, res.data.objects[0].id);
 				wx.setStorageSync(constant.KEY_GYM_NAME, res.data.objects[0].name);
